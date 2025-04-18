@@ -1,4 +1,5 @@
-﻿using Plugins.FX.Sound;
+﻿using System;
+using Plugins.HealthSystem;
 using Plugins.LoopForge;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,50 +8,27 @@ namespace Plugins.Bots
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField] private float _distanceToFireInit;
-        
+        private UnitProperties _properties;
         private NavMeshAgent _agent;
-        private Transform _player;
-        private AIInput _aiInput;
-        private float _distanceToFire;
 
-        public void Init(Transform player, AIInput input)
+        public void Init(UnitProperties properties)
         {
-            _agent = GetComponent<NavMeshAgent>();
-            _player = player;
-            _aiInput = input;
-            _distanceToFire = _distanceToFireInit * _distanceToFireInit;
+            _properties = properties;
         }
 
-        private void OnTick()
+        private void Tick()
         {
-            var dist = (_agent.transform.position - _player.position).sqrMagnitude;
-            if (dist <= _agent.stoppingDistance)
-            {
-                _aiInput.RotateActive = true;
-            }
-            else
-            {
-                _aiInput.RotateActive = false;
-            }
-            if (dist <= _distanceToFire)
-            {
-                _aiInput.FireActive = true;
-            }
-            else
-            {
-                _aiInput.FireActive = false;
-            }
+            
         }
 
         private void OnEnable()
         {
-            CoreLoop.OnFixedTick += OnTick;
+            CoreLoop.OnTick += Tick;
         }
 
         private void OnDisable()
         {
-            CoreLoop.OnFixedTick -= OnTick;
+            CoreLoop.OnTick -= Tick;
         }
     }
 }

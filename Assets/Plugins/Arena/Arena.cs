@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
-using Plugins.Bots;
 using Plugins.CharacteristicsSystem;
 using Plugins.FX.Sound;
 using UnityEngine;
@@ -33,7 +32,7 @@ namespace Plugins.Arena
             _currentWave++;
             OnWaveStarted?.Invoke();
             var units = _unitsOnFirstWave * _currentWave;
-            StartCoroutine(SpawnRoutine(_factories[_currentWave-1].FatalFactories, units));
+           // StartCoroutine(SpawnRoutine(_factories[_currentWave-1].FatalFactories, units));
         }
 
         private void OnKilled(Unit unit)
@@ -50,7 +49,7 @@ namespace Plugins.Arena
                 OnWaveDone?.Invoke();
             }
         }
-
+/*
         private IEnumerator SpawnRoutine(List<BotFactory> factories, int quota)
         {
             var duration = new WaitForSeconds(_spawnDuration);
@@ -64,5 +63,6 @@ namespace Plugins.Arena
                 yield return duration;
             }
         }
+        */
     }
 }

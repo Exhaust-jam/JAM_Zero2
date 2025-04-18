@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2ff26864e844378336e6e54ff8985e, type: 3}
+  m_Name: ButtonSettings
+  m_EditorClassIdentifier: 
+  _commands:
+  - Command: -1
+    Key: 0
+    Axis: Horizontal
+    UseAxis: 1
+  - Command: -2
+    Key: 0
+    Axis: Vertical
+    UseAxis: 1
+  - Command: 10
+    Key: 32
+    Axis: Vertical
+    UseAxis: 0

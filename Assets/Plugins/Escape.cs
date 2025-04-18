@@ -19,7 +19,7 @@ namespace Plugins
                 else Hide();
             }
         }
-
+/*
         private void Deactivate()
         {
             foreach (var controllable in _playerUnit.Controllables)
@@ -35,6 +35,7 @@ namespace Plugins
                 (controllable as MonoBehaviour).enabled = true;
             }
         }
+        */
 
         public void Show()
         {
@@ -43,7 +44,7 @@ namespace Plugins
             Cursor.visible = true;
             CoreLoop.PauseOn();
             _animator.SetBool(_boolParametr, true);
-            Deactivate();
+            //Deactivate();
         }
 
         public void Hide()
@@ -53,7 +54,7 @@ namespace Plugins
             Cursor.visible = false;
             CoreLoop.PauseOff();
             _animator.SetBool(_boolParametr, false);
-            Activate();
+            //Activate();
         }
 
         private void OnEnable()

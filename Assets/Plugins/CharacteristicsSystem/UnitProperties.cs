@@ -29,6 +29,7 @@ namespace Plugins.HealthSystem
         public UnitProperty<float> Armor {get; set;}
         public UnitProperty<float> Damage {get; set;}
         public UnitProperty<float> Speed {get; set;}
+        public UnitProperty<float> StartSpeed {get; set;}
         public UnitProperty<bool> IsSmart {get; set; }
         
         public Transform Head => _head;
@@ -40,6 +41,7 @@ namespace Plugins.HealthSystem
             Damage = new UnitProperty<float>(_damage, 0, Characteristics.Damage);
             Speed = new UnitProperty<float>(_speed, 0, Characteristics.Speed);
             IsSmart = new UnitProperty<bool>(_isSmart, false, Characteristics.IsSmart);
+            StartSpeed = new UnitProperty<float>(_speed, 0, Characteristics.Speed);
             _unitProperties = new object[] { CurrentHp, Armor, Damage, Speed, IsSmart }.Cast<IUnitProperty>().ToList();
         }
     }

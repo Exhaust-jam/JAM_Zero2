@@ -11,11 +11,6 @@ namespace Plugins.CharacteristicsSystem
         [SerializeField] private GameObject _componentContainer;
         private AnimationsProperties _animationsProperties;
         public event Action<Unit> OnDestroyed;
-        public IControllable[] Controllables
-        {
-            get;
-            private set;
-        }
         
         public void Init()
         {
@@ -31,15 +26,10 @@ namespace Plugins.CharacteristicsSystem
                     health.OnDeath += PreDestroy;
                 }
             }
-            Controllables = _componentContainer.GetComponents<IControllable>();
         }
 
         private void PreDestroy()
         {
-            foreach (var controllable in Controllables)
-            {
-                (controllable as MonoBehaviour).enabled = false;
-            }
             _animationsProperties?.Die();
             OnDestroyed?.Invoke(this);
         }
